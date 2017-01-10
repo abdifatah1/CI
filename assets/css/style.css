@@ -2,33 +2,14 @@ body{
   background-color: grey;
 }
 
-/*.naav{
-  margin-top: -0.4%;
-  display: flex;
-  justify-content: center;
-  background-color: black;
-  height: 50px;
-
-}
-.naav li {
-  list-style-type: none;
-  padding: 10px 20px;
-  border: 1px solid grey;
-}
-.naav li a{
-  color: white;
-  font-size: 20px;
-  font-weight: bold;
-  font-family:sans-serif;
-}
 .naav li:hover{
 
   background-color: grey;
 
-}*/
+}
 .container {
   width: 80%;
-  margin: auto;
+  margin: 10% auto auto;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
