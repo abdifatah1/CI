@@ -13,32 +13,22 @@
     }
     ?>
     <?php foreach($posts as $post) : ?>
-      <table class="table_index">
-        <thead>
-          <th><?php echo ucfirst($post['title']); ?></th>
-        </thead>
 
-        <tbody>
-
-          <tr>
-            <td>
-              <a  class="first_a" href="<?php echo site_url('/posts/' .$post['slug']);?>">
-                <img class="post_img" src="<?php echo base_url(); ?>/assets/img/<?php echo $post['img']; ?>" alt=""> <br>
-                <?php echo limit_text($post['body'],40); ?><br>
-                <?php
-                $time = strtotime($post['created']);
-                $post['created'] = date("m/ d / y", $time);
-                ?>
-                <small>posted on : <?php echo $post['created']; ?></small>
-              </a>
-              <p>
-                <a href="<?php echo site_url('/posts/' .$post['slug']);?>">Read more</a>
-              </p>
-            </td>
-          </tr>
-        </tbody>
-
-      </table>
-
+          <h3><?php echo ucfirst($post['title']); ?></h3>
+          <div class="">
+            <a  class="first_a" href="<?php echo site_url('/posts/' .$post['slug']);?>">
+              <img class="post_img" src="<?php echo base_url(); ?>/assets/img/<?php echo $post['img']; ?>" alt=""> <br>
+              <?php echo limit_text($post['body'],40); ?><br>
+              <?php
+              $time = strtotime($post['created']);
+              $post['created'] = date("m/ d / y", $time);
+              ?>
+              <small>posted on : <?php echo $post['created']; ?></small>
+            </a>
+            <p>
+              <a href="<?php echo site_url('/posts/' .$post['slug']);?>">Read more</a>
+            </p>
+          </div>
+            
     <?php endforeach ?>
   </div>

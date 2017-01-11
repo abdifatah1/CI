@@ -11,7 +11,7 @@
       <textarea name="body" id="editor1" rows="8" cols="40"><?php echo $post['body']; ?></textarea>
     </label><br>
     <label for="">Document
-      <input type="file" name="userfile" value=""><br>
+      <input type="file" name="userfile" value="<?php echo $post['img']; ?>"><br>
     </label> <br>
     <input class="btn btn-success" type="submit" name="submit" value="Edit">
   </form>

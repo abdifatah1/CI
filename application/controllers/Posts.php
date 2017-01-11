@@ -29,7 +29,7 @@ class Posts extends CI_Controller {
 	{
 		$data['title'] = 'Create posts';
 
-		$this->form_validation->set_rules('title','Title','required');
+		$this->form_validation->set_rules('title','Title','trim|required|min_length[5]|max_length[30]');
 		$this->form_validation->set_rules('body','Body','required');
 		$this->form_validation->set_rules('userfile','Image','required');
 		//uploading image

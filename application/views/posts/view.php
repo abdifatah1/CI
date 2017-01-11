@@ -3,10 +3,8 @@
 
   <div class="content">
     <table class="table_view">
-      <small>posted on : <?php echo $post['created']; ?></small>
-      <thead>
-        <th><?php echo $post['title']; ?></th>
-      </thead>
+      <small>posted on : <?php echo $post['created']?></small>
+  
       <tbody>
         <tr>
           <td>

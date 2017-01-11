@@ -5,7 +5,7 @@
   <title>Codeigniter</title>
   <link rel="stylesheet" href="<?php echo base_url()?>assets/css/bootstrap.css" />
   <link rel="stylesheet" href="<?php echo base_url()?>assets/css/style.css" />
-  <script src="http://cdn.ckeditor.com/4.6.1/full/ckeditor.js"></script>
+  <script src="<?php echo base_url()?>assets/js/ckeditor/ckeditor.js"></script>
 </head>
 <body>
   <header>
