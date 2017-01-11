@@ -4,7 +4,7 @@ $route['posts/create'] = 'posts/create';
 $route['posts/update'] = 'posts/update';
 $route['posts/(:any)'] = 'posts/view/$1';
 $route['posts'] = 'posts/index';
-$route['default_controller'] = 'pages/view';
+$route['default_controller'] = 'login';
 $route['(:any)'] = 'pages/view/$1';
 $route['404_override'] = '';
 

@@ -1,6 +1,7 @@
 <div class="container">
   <div class="content">
-    <h1>Login</h1>
+    <?php  ?>
+    <h1><?php // echo $title; ?></h1>
        <?php echo validation_errors(); ?>
        <?php echo form_open('verifylogin/index'); ?>
          <label for="username">Username:</label>

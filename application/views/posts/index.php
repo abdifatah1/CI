@@ -2,6 +2,7 @@
 <div class="container">
   <div class="content">
     <h1><?php echo $title; ?></h1>
+    <h1><?php //echo ?></h1>
     <?php
     function limit_text($text, $limit) {
       if (str_word_count($text, 0) > $limit) {
@@ -29,6 +30,6 @@
               <a href="<?php echo site_url('/posts/' .$post['slug']);?>">Read more</a>
             </p>
           </div>
-            
+
     <?php endforeach ?>
   </div>

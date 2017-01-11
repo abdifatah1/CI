@@ -1,62 +1,65 @@
-<?php
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
 class VerifyLogin extends CI_Controller {
 
-  function __construct()
-  {
-    parent::__construct();
-    $this->load->model('user_model','',TRUE);
-  }
+ function __construct()
+ {
+   parent::__construct();
+   $this->load->model('user_model','',TRUE);
+ }
 
-  function index()
-  {
-    //This method will have the credentials validation
-    $this->load->library('form_validation');
+ function index()
+ {
+   //This method will have the credentials validation
+   $this->load->library('form_validation');
 
-    $this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[3]|max_length[12]');
-    $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[3]|max_length[12]');
+   $this->form_validation->set_rules('username', 'Username', 'trim|required');
+   $this->form_validation->set_rules('password', 'Password', 'trim|required|callback_check_database');
 
-    if($this->form_validation->run() == FALSE)
-    {
-      //Field validation failed.  User redirected to login page
+   if($this->form_validation->run() == FALSE)
+   {
+     //Field validation failed.  User redirected to login page
+     $this->load->view('inc/header_view');
+     $this->load->view('login_view');
+     $this->load->view('inc/footer_view');
+   }
+   else
+   {
+     //Go to private area
+     redirect('home/index', 'refresh');
+   }
 
-      $this->load->view('inc/header_view');
-      $this->load->view('pages/home');
-      $this->load->view('inc/footer_view');
-    }
-    else
-    {
-      //Go to private area
-      redirect('posts', 'refresh');
-    }
+ }
 
-  }
+ function check_database($password)
+ {
+   //Field validation succeeded.  Validate against database
+   $username = $this->input->post('username');
 
-  function check_database($password)
-  {
-    //Field validation succeeded.  Validate against database
-    $username = $this->input->post('username');
+   //query the database
+   $result = $this->user_model->login($username, $password);
 
-    //query the database
-    $result = $this->user_model->login($username, $password);
-
-    if($result)
-    {
-      $sess_array = array();
-      foreach($result as $row)
-      {
-        $sess_array = array(
-          'id' => $row->id,
-          'username' => $row->username
-        );
-        $this->session->set_userdata('logged_in', $sess_array);
-      }
-      return TRUE;
-    }
-    else
-    {
-      $this->form_validation->set_message('check_database', 'Invalid username or password');
-      return false;
-    }
-  }
+   if($result)
+   {
+     $sess_array = array();
+     foreach($result as $row)
+     {
+       $sess_array = array(
+         'id' => $row->id,
+         'username' => $row->username
+       );
+       $this->session->set_userdata('logged_in', $sess_array);
+     }
+     return TRUE;
+   }
+   else
+   {
+     $this->form_validation->set_message('check_database', 'Invalid username or password');
+     $this->load->view('inc/header_view');
+     $this->load->view('login_view');
+     $this->load->view('inc/footer_view');
+     return false;
+   }
+ }
 }
 ?>
