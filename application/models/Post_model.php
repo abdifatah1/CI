@@ -21,12 +21,14 @@ class Post_model extends CI_model {
   // create function model
   public function create_post($file_name){
     $slug = url_title($this->input->post('title'));
+
     $data = array(
       'title' => $this->input->post('title'),
       'slug' => $slug,
       'body' => $this->input->post('body'),
       'img' => $file_name
     );
+
     return $this->db->insert('posts',$data);
   }
   // delete function model
@@ -37,7 +39,7 @@ class Post_model extends CI_model {
 
   // Edit function model
   public function update_post(){
-    $slug = url_title($this->input->post('title'));
+    $slug = url_title(convert_accented_characters($this->input->post('title')));
     $data = array(
       'title' => $this->input->post('title'),
       'slug' => $slug,

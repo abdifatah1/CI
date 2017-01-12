@@ -18,7 +18,7 @@ class Home extends CI_Controller {
     else
     {
       //If no session, redirect to login page
-      redirect('login/index', 'refresh');
+      redirect('login', 'refresh');
     }
   }
 
@@ -26,7 +26,7 @@ class Home extends CI_Controller {
   {
     $this->session->unset_userdata('logged_in');
     session_destroy();
-    redirect('home/index', 'refresh');
+    redirect('home', 'refresh');
   }
 
 }

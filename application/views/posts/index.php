@@ -19,7 +19,7 @@
           <div class="">
             <a  class="first_a" href="<?php echo site_url('/posts/' .$post['slug']);?>">
               <img class="post_img" src="<?php echo base_url(); ?>/assets/img/<?php echo $post['img']; ?>" alt=""> <br>
-              <?php echo limit_text($post['body'],40); ?><br>
+              <?php echo limit_text($post['body'],70); ?><br>
               <?php
               $time = strtotime($post['created']);
               $post['created'] = date("m/ d / y", $time);

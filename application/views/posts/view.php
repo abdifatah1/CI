@@ -4,7 +4,7 @@
   <div class="content">
     <table class="table_view">
       <small>posted on : <?php echo $post['created']?></small>
-  
+
       <tbody>
         <tr>
           <td>
@@ -16,9 +16,12 @@
       </tbody>
     </table>
     <hr>
+    <?php if($admin){ ?>
     <a class="btn btn-default" href="<?php echo base_url(); ?>posts/edit/<?php echo $post['slug']; ?>">Edit</a>
 
     <?php echo form_open('posts/delete/' .$post['id']); ?>
+
     <input class="btn btn-danger" type="submit" name="submit" value="Delete">
+    <?php } ?>
   </form>
 </div>

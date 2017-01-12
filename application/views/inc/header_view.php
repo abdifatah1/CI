@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="<?php echo base_url()?>assets/css/bootstrap.css" />
   <link rel="stylesheet" href="<?php echo base_url()?>assets/css/style.css" />
   <script src="<?php echo base_url()?>assets/ckeditor/ckeditor.js"></script>
+  <script src="<?php echo base_url()?>assets/js/jquery-3.1.1.js"></script>
 </head>
 <body>
   <header>
