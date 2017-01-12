@@ -3,15 +3,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Posts extends CI_Controller {
 
-	// public $data['username'] = ;
 
-
+	// index method show all the posts
 	public function index()
 	{
 		if($this->session->userdata('logged_in')){
-			$data['title'] = 'Create posts';
 			$session_data = $this->session->userdata('logged_in');
 			$data['username'] = $session_data['username'];
+			$data['admin'] = $session_data['admin'];
 			$data['title'] = 'Latest posts';
 
 			$data['posts'] = $this->post_model->get_posts();

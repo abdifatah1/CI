@@ -39,7 +39,8 @@ class Post_model extends CI_model {
 
   // Edit function model
   public function update_post(){
-    $slug = url_title(convert_accented_characters($this->input->post('title')));
+    $slug = url_title(convert_accented_characters($this->input->post('title'), 'dash', TRUE));
+    // $slug = url_title($this->input->post('title'));
     $data = array(
       'title' => $this->input->post('title'),
       'slug' => $slug,
@@ -49,4 +50,5 @@ class Post_model extends CI_model {
     $this->db->where('id',$this->input->post('id'));
     return $this->db->update('posts',$data);
   }
+
 }

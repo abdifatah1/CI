@@ -21,5 +21,15 @@ Class User_model extends CI_Model
     }
   }
 
+  public function register_user(){
+
+      $data = array(
+        'username' => $this->input->post('username'),
+        'password' => $this->input->post('password'),
+        'confirmation' => $this->input->post('confirmationp'),
+      );
+
+      return $this->db->insert('users',$data);
+  }
 }
 ?>

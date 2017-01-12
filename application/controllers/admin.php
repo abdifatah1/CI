@@ -12,7 +12,6 @@ class Admin extends CI_Controller{
       $session_data = $this->session->userdata('logged_in');
       $data['username'] = $session_data['username'];
       $data['title'] = "Welcome to the admin page";
-      var_dump($session_data);
       $data['admin'] = $session_data['admin'];
       $this->load->view('inc/header_view', $data);
       $this->load->view('admin_view', $data);

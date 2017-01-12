@@ -15,8 +15,9 @@
 
   <div class="content">
 <?php
-if($admin){
-  echo '<a href="<?php echo base_url();?>posts/create">Create a post</a>';
+if($admin){ ?>
+  <a href='<?php echo base_url();?>posts/create'>Create a post</a>
+  <?php
 } else {
   echo 'you are not admin';
 }

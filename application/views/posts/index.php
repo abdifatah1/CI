@@ -16,7 +16,7 @@
     <?php foreach($posts as $post) : ?>
 
           <h3><?php echo ucfirst($post['title']); ?></h3>
-          <div class="">
+          <div class="table_index">
             <a  class="first_a" href="<?php echo site_url('/posts/' .$post['slug']);?>">
               <img class="post_img" src="<?php echo base_url(); ?>/assets/img/<?php echo $post['img']; ?>" alt=""> <br>
               <?php echo limit_text($post['body'],70); ?><br>

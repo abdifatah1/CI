@@ -25,8 +25,8 @@ CKEDITOR.editorConfig = function( config ) {
 		{ name: 'colors' },
 		{ name: 'about' }
 	];
-	config.filebrowserBrowseUrl = '../assets/ckeditor/kcfinder/browse.php?opener=ckeditor&type=files';
-	config.filebrowserImageBrowseUrl = '../assets/ckeditor/kcfinder/browse.php?opener=ckeditor&type=images';
+	config.filebrowserBrowseUrl = '/assets/ckeditor/kcfinder/browse.php?opener=ckeditor&type=files';
+	config.filebrowserImageBrowseUrl = '/assets/ckeditor/kcfinder/browse.php?opener=ckeditor&type=images';
 	config.filebrowserFlashBrowseUrl = '../assets/ckeditor/kcfinder/browse.php?opener=ckeditor&type=flash';
 	config.filebrowserUploadUrl = '../assets/ckeditor/kcfinder/upload.php?opener=ckeditor&type=files';
 	config.filebrowserImageUploadUrl = '../assets/ckeditor/kcfinder/upload.php?opener=ckeditor&type=images';

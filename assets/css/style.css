@@ -16,6 +16,7 @@ body{
 }
 .content {
   flex: 1;
+
 }
 footer{
   height: 50px;
@@ -36,11 +37,11 @@ td small{
 /*index.php*/
 .table_index{
   width: 33%;
-  border: 1px solid black;
+  /*border: 1px solid black;*/
 }
 /*view.php*/
 .table_view{
-  width: 70%;
+  width: 50%;
 }
 .view_img{
 width: 100px;

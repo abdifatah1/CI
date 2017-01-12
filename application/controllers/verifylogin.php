@@ -8,7 +8,7 @@ class VerifyLogin extends CI_Controller {
     $this->load->model('user_model','',TRUE);
   }
 
-  function index()
+  public function index()
   {
     //This method will have the credentials validation
     $this->load->library('form_validation');
@@ -19,7 +19,8 @@ class VerifyLogin extends CI_Controller {
     if($this->form_validation->run() == FALSE)
     {
       //Field validation failed.  User redirected to login page
-      $this->load->view('inc/header_view');
+      $data['title'] = 'Login';
+      $this->load->view('inc/header_view',$data);
       $this->load->view('login_view');
       $this->load->view('inc/footer_view');
     }
@@ -27,6 +28,31 @@ class VerifyLogin extends CI_Controller {
     {
       //Go to private area
       redirect('home', 'refresh');
+    }
+
+  }
+  public function register()
+  {
+    //This method will have the credentials validation
+    $this->load->library('form_validation');
+
+    $this->form_validation->set_rules('username', 'Username', 'trim|is_unique[users.username]|required');
+    $this->form_validation->set_rules('password', 'Password', 'trim|required');
+    $this->form_validation->set_rules('confirmationp', 'password confirmation', 'trim|required');
+
+    if($this->form_validation->run() == FALSE)
+    {
+      //Field validation failed.  User redirected to login page
+      $data['title'] = "Register";
+      $this->load->view('inc/header_view');
+      $this->load->view('register',$data);
+      $this->load->view('inc/footer_view');
+    }
+    else
+    {
+
+      $this->user_model->register_user();
+      // redirect('home', 'refresh');
     }
 
   }
