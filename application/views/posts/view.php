@@ -17,10 +17,9 @@
     </table>
     <hr>
     <?php if($admin){ ?>
-    <a class="btn btn-default" href="<?php echo base_url(); ?>posts/edit/<?php echo $post['slug']; ?>">Edit</a>
+    <p><a class="btn btn-default" href="<?php echo base_url(); ?>posts/edit/<?php echo $post['slug']; ?>">Edit</a></p>
 
     <?php echo form_open('posts/delete/' .$post['id']); ?>
-
     <input class="btn btn-danger" type="submit" name="submit" value="Delete">
     <?php } ?>
   </form>

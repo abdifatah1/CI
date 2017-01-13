@@ -7,8 +7,11 @@ class Admin extends CI_Controller{
 
   function index()
   {
+
     if($this->session->userdata('logged_in'))
     {
+      $data['posts'] = $this->post_model->get_posts();
+      $data['users'] = $this->user_model->get_users();
       $session_data = $this->session->userdata('logged_in');
       $data['username'] = $session_data['username'];
       $data['title'] = "Welcome to the admin page";
@@ -23,6 +26,8 @@ class Admin extends CI_Controller{
       redirect('login');
     }
   }
-
-
+    public function delete($id)
+  {
+    $this->user_model->delete_user($id);
+  }
 }

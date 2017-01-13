@@ -9,12 +9,16 @@ class Login extends CI_Controller {
 
   function index()
   {
-    //  $this->load->helper(array('form'));
     // check if connected
     if($this->session->userdata('logged_in'))
     {
       $session_data = $this->session->userdata('logged_in');
-      redirect('posts');
+      if($session_data['admin']){
+        var_dump($session_data['admin']);
+        redirect('admin');
+      }else {
+        redirect('home');
+      }
 
     }
     else
@@ -25,7 +29,7 @@ class Login extends CI_Controller {
       $this->load->view('inc/footer_view');
       // redirect('verifylogin');
     }
-    
+
   }
 
 }

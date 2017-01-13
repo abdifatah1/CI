@@ -1,17 +1,28 @@
 <?php
 
 class Post_model extends CI_model {
-  //  public function __construct(){
-  //  $this->load->database();
-  //}
 
-  // select function model
+
+  // get the last four posts
   public function get_posts($slug = FALSE)
   {
     if ($slug === FALSE)
     {
       $this->db->order_by('id','DESC');
-      $query = $this->db->get('posts',3);
+      $query = $this->db->get('posts',4);
+      return $query->result_array();
+    }
+
+    $query = $this->db->get_where('posts', array('slug' => $slug));
+    return $query->row_array();
+  }
+  // get all posts
+  public function get_all($slug = FALSE)
+  {
+    if ($slug === FALSE)
+    {
+      $this->db->order_by('id','DESC');
+      $query = $this->db->get('posts');
       return $query->result_array();
     }
 

@@ -14,9 +14,11 @@ body{
   flex-direction: column;
   min-height: 100vh;
 }
-.content {
+.content:not(.diff) {
   flex: 1;
-
+  display: flex;
+  margin-right: 2%;
+  justify-content: space-between;
 }
 footer{
   height: 50px;
@@ -55,4 +57,15 @@ margin-left: 5%;
 }
 .login{
   margin-right: 5px !important;
+}
+.content_admin{
+  flex: 1;
+/*display: flex;*/
+}
+.content_posts{
+  flex: 1;
+  margin-left: 10%;
+}
+.users{
+margin-bottom: 5%;
 }

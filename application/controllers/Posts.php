@@ -4,42 +4,52 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Posts extends CI_Controller {
 
 
-	// index method show all the posts
+	// index method show lastest posts
 	public function index()
 	{
-		if($this->session->userdata('logged_in')){
-			$session_data = $this->session->userdata('logged_in');
-			$data['username'] = $session_data['username'];
-			$data['admin'] = $session_data['admin'];
-			$data['title'] = 'Latest posts';
 
-			$data['posts'] = $this->post_model->get_posts();
-			$this->load->view('inc/header_view',$data);
-			$this->load->view('posts/index', $data);
-			$this->load->view('inc/footer_view');
-		}else {
-			redirect('login');
-		}
+		$session_data = $this->session->userdata('logged_in');
+		$data['username'] = $session_data['username'];
+		$data['admin'] = $session_data['admin'];
+		$data['title'] = 'Latest posts';
+
+		$data['posts'] = $this->post_model->get_posts();
+		$this->load->view('inc/header_view',$data);
+		$this->load->view('home_view', $data);
+		$this->load->view('inc/footer_view');
 	}
-	// select function
+	// get all posts
+	public function all_posts()
+	{
+
+		$session_data = $this->session->userdata('logged_in');
+		$data['username'] = $session_data['username'];
+		$data['admin'] = $session_data['admin'];
+		$data['title'] = 'All posts';
+		$data['posts'] = $this->post_model->get_all();
+		$this->load->view('inc/header_view',$data);
+		$this->load->view('posts/index', $data);
+		$this->load->view('inc/footer_view');
+	}
+	// methos show the selected article
 	public function view($slug = NULL)
 	{
 		$data['post'] = $this->post_model->get_posts($slug);
 		if(!empty($date['post']))	{
 			show_404();
 		}
-		if($this->session->userdata('logged_in')){
-			$session_data = $this->session->userdata('logged_in');
-			$data['username'] = $session_data['username'];
-			$data['admin'] = $session_data['admin'];
 
-			$data['title'] = $data['post']['title'];
-			$this->load->view('inc/header_view',$data);
-			$this->load->view('posts/view', $data);
-			$this->load->view('inc/footer_view');
-		}
+		$session_data = $this->session->userdata('logged_in');
+		$data['username'] = $session_data['username'];
+		$data['admin'] = $session_data['admin'];
+
+		$data['title'] = $data['post']['title'];
+		$this->load->view('inc/header_view',$data);
+		$this->load->view('posts/view', $data);
+		$this->load->view('inc/footer_view');
+
 	}
-	// create function
+	// create an article
 	public function create()
 	{
 		if($this->session->userdata('logged_in')){
@@ -88,12 +98,12 @@ class Posts extends CI_Controller {
 		}
 	}
 
-	// delete function
+	// delete an article
 	public function delete($id){
 		$this->post_model->delete_post($id);
 		redirect('posts');
 	}
-	// edit function
+	// edit article
 	public function edit($slug){
 
 		$data['post'] = $this->post_model->get_posts($slug);
@@ -115,6 +125,7 @@ class Posts extends CI_Controller {
 			$this->load->view('inc/footer_view');
 		}
 	}
+	// update article
 	public function update(){
 		$this->post_model->update_post();
 		redirect('posts');

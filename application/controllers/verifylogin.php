@@ -27,14 +27,15 @@ class VerifyLogin extends CI_Controller {
     else
     {
       //Go to private area
-      redirect('home', 'refresh');
+      redirect('login', 'refresh');
     }
 
   }
   public function register()
   {
+    //  user connected
+  $session_data = $this->session->userdata('logged_in');
     //This method will have the credentials validation
-    $this->load->library('form_validation');
 
     $this->form_validation->set_rules('username', 'Username', 'trim|is_unique[users.username]|required');
     $this->form_validation->set_rules('password', 'Password', 'trim|required');
@@ -44,7 +45,8 @@ class VerifyLogin extends CI_Controller {
     {
       //Field validation failed.  User redirected to login page
       $data['title'] = "Register";
-      $this->load->view('inc/header_view');
+      $data['username'] = $session_data['username'];
+      $this->load->view('inc/header_view',$data);
       $this->load->view('register',$data);
       $this->load->view('inc/footer_view');
     }
@@ -52,7 +54,7 @@ class VerifyLogin extends CI_Controller {
     {
 
       $this->user_model->register_user();
-      // redirect('home', 'refresh');
+      redirect('login', 'refresh');
     }
 
   }
