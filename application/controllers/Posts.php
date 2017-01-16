@@ -56,6 +56,7 @@ class Posts extends CI_Controller {
 			$data['title'] = 'Create posts';
 			$session_data = $this->session->userdata('logged_in');
 			$data['username'] = $session_data['username'];
+			$data['id'] = $session_data['id'];
 			$data['admin'] = $session_data['admin'];
 
 			$this->form_validation->set_rules('title','Title','trim|required|min_length[5]|max_length[30]');
@@ -84,8 +85,9 @@ class Posts extends CI_Controller {
 
 			else{
 				$img = $this->upload->data();
+				$user_id = $data['id'];
 				$file_name = $img['file_name'];
-				$this->post_model->create_post($file_name);
+				$this->post_model->create_post($file_name,$user_id);
 				redirect('posts');
 
 			}

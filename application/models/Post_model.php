@@ -30,14 +30,15 @@ class Post_model extends CI_model {
     return $query->row_array();
   }
   // create function model
-  public function create_post($file_name){
+  public function create_post($file_name,$user_id){
     $slug = url_title($this->input->post('title'));
 
     $data = array(
       'title' => $this->input->post('title'),
       'slug' => $slug,
       'body' => $this->input->post('body'),
-      'img' => $file_name
+      'img' => $file_name,
+      'user_id' => $user_id
     );
 
     return $this->db->insert('posts',$data);
