@@ -14,27 +14,19 @@ body{
   flex-direction: column;
   min-height: 100vh;
 }
-.content:not(.diff) {
+.content {
   flex: 1;
   display: flex;
   margin-right: 2%;
   justify-content: space-between;
 }
-footer{
-  height: 50px;
-  background-color: black;
-  margin: 0;
-  color: white;
-  text-align: center;
-  width: 126%;
-  margin-left: -13%;
-}
+
 td small{
   background-color: white;
 }
 .first_a {
-  color: inherit;
-  text-decoration: inherit;
+  color: inherit !important;
+  text-decoration: inherit !important;
 }
 /*index.php*/
 .table_index{
@@ -60,7 +52,6 @@ margin-left: 5%;
 }
 .content_admin{
   flex: 1;
-/*display: flex;*/
 }
 .content_posts{
   flex: 1;
@@ -68,4 +59,14 @@ margin-left: 5%;
 }
 .users{
 margin-bottom: 5%;
+}
+
+footer{
+  height: 50px;
+  background-color: black;
+  margin: 0;
+  color: white;
+  text-align: center;
+  width: 126%;
+  margin-left: -13%;
 }

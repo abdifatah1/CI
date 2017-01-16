@@ -25,11 +25,12 @@
           <?php   if(isset($username)){
             $name = ucfirst($username);
             $logout = site_url('home/logout');
-            if(isset($admin)){
+            // if(isset($admin)){
               $link = site_url('admin');
+              $user = site_url('admin/profile');
               echo "<li><a class='btn' href='$link'>Admin</a></li>";
-            }
-            echo "<li><a class='btn' href='#'>$name</a></li>";
+            // }
+            echo "<li><a class='btn' href='$user'>$name</a></li>";
             echo "<li><a class='btn' href='$logout'>Logout</a></li>";
           }else{
             $link = site_url('home/index');

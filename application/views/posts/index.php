@@ -1,13 +1,13 @@
 
 <div class="container">
-    <h1><?php echo $title; ?></h1>
+    <h1 class="text-center"><?php echo $title; ?></h1>
   <div class="content_posts">
 
 
     <?php foreach($posts as $post) : ?>
 
 
-          <div class="table_index">
+          <div class="col-lg-4 col-md-4 col-sm-6">
             <h3><?php echo ucfirst($post['title']); ?></h3>
             <a  class="first_a" href="<?php echo site_url('/posts/' .$post['slug']);?>">
               <img class="post_img" src="<?php echo base_url(); ?>/assets/img/<?php echo $post['img']; ?>" alt=""> <br>

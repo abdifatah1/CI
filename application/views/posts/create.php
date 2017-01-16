@@ -2,7 +2,7 @@
   <h1><?= $title; ?></h1>
   <?php echo validation_errors(); ?>
   <div class="content">
-    <?php if ($admin) { ?>
+    <?php if (isset($username)) { ?>
 
       <?php echo form_open_multipart('posts/create'); ?>
       <?php echo form_label('Title') . '<br>'; ?>
