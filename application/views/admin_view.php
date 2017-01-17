@@ -10,12 +10,12 @@
   if($admin){ ?>
     <p><a class ="btn btn-default" href='<?php echo base_url();?>posts/create'>Create a new post</a></p>
 
-    <div class="content">
+    <div class="">
       <?php foreach($posts as $post) : ?>
 
 
 
-        <div class="table_index">
+        <div class="col-lg-3 col-md-3 col-sm-6">
           <h3 class="diff"><?php echo ucfirst($post['title']); ?></h3>
           <a  class="first_a" href="<?php echo site_url('/posts/' .$post['slug']);?>">
             <img class="post_img" src="<?php echo base_url(); ?>/assets/img/<?php echo $post['img']; ?>" alt=""> <br>
@@ -37,6 +37,9 @@
       </div>
 
     <?php endforeach ?>
+    <div class="pagination">
+      <?php echo $this->pagination->create_links(); ?>
+    </div>
   </div>
   <div class="users">
     <?php foreach ($users as $user) {

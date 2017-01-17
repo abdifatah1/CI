@@ -10,7 +10,16 @@ class Admin extends CI_Controller{
 
     if($this->session->userdata('logged_in'))
     {
-      $data['posts'] = $this->post_model->get_posts();
+      $this->load->library('pagination');
+      $config['base_url'] = base_url() . 'admin';
+      $config['total_rows'] = $this->db->get('posts')->num_rows();
+      $config['per_page'] = 8;
+      $config['use_page_numbers'] = TRUE;
+      $config['attributes'] = array('class' => 'pagin' );
+      $this->pagination->initialize($config);
+      $query = $this->db->order_by('id','DESC')->get('posts',$config['per_page'],$this->uri->segment(3));
+      $data['posts'] = $query->result_array();
+      // $data['posts'] = $this->post_model->get_all();
       $data['users'] = $this->user_model->get_users();
       $session_data = $this->session->userdata('logged_in');
       $data['username'] = $session_data['username'];
@@ -36,9 +45,11 @@ class Admin extends CI_Controller{
     $user_id = $session_data['id'];
     $data['profile'] = $this->post_model->profile_posts($user_id);
     $data['username'] = $session_data['username'];
-    $data['title'] = "Welcome to the profile page";
+    $username = $data['username'];
+    $data['title'] = "Welcome $username ";
     $this->load->view('inc/header_view', $data);
     $this->load->view('profile_view', $data);
     $this->load->view('inc/footer_view');
+
   }
 }

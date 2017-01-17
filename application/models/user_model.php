@@ -46,5 +46,6 @@ Class User_model extends CI_Model
 
     }
   }
+  
 }
 ?>

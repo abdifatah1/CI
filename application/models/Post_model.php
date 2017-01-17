@@ -3,20 +3,19 @@
 class Post_model extends CI_model {
 
 
-  // get the last four posts
+  // get the last six posts
   public function get_posts($slug = FALSE)
   {
     if ($slug === FALSE)
     {
       $this->db->order_by('id','DESC');
-      $query = $this->db->get('posts',4);
+      $query = $this->db->get('posts',6);
       return $query->result_array();
     }
 
     $query = $this->db->get_where('posts', array('slug' => $slug));
     return $query->row_array();
   }
-  // get all posts
   public function get_all($slug = FALSE)
   {
     if ($slug === FALSE)
@@ -29,6 +28,14 @@ class Post_model extends CI_model {
     $query = $this->db->get_where('posts', array('slug' => $slug));
     return $query->row_array();
   }
+  // pagination page
+  public function get_pagination($per_page,$segment)
+  {
+    $this->db->order_by('id','DESC');
+    $query = $this->db->get('posts', $per_page,$segment);
+    return $query->result_array();
+  }
+
   // create function model
   public function create_post($file_name,$user_id){
     $slug = url_title($this->input->post('title'));

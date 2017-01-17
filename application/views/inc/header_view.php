@@ -19,7 +19,7 @@
         <li><a href="<?php echo site_url('posts/create') ?>">Create Post</a></li>
         <li><a href="<?php echo site_url('questions') ?>">Questions</a></li>
         <li><a href="<?php echo site_url('jobs') ?>">Jobs</a></li>
-        <li><a href="<?php echo site_url('documentations') ?>">Documentations</a></li>
+        <li><a href="<?php echo site_url('contact') ?>">Contact Us</a></li>
       </ul>
         <ul class="nav navbar-nav navbar-right login ">
           <?php   if(isset($username)){

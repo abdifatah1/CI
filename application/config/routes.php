@@ -7,6 +7,7 @@ $route['posts/(:any)'] = 'posts/view/$1';
 $route['posts'] = 'posts/index';
 $route['login'] = 'login/index';
 $route['home'] = 'home/index';
+$route['contact'] = 'contact/index';
 $route['admin'] = 'admin/index';
 $route['default_controller'] = 'posts/index';
 $route['(:any)'] = 'pages/view/$1';

@@ -21,7 +21,7 @@
     <label for="password">Confirmation:</label><br>
     <input type="password" size="20" id="passowrd" name="confirmationp"/>
     <br/><br/>
-    <input class ="btn btn-primary col-md-offset-0 col-md-1" type="submit" value="Register"/>
+    <input class ="btn btn-primary btn-lg col-md-offset-0 " type="submit" value="Register"/>
     <?php echo form_close(); ?>
 
   </div>
