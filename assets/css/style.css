@@ -7,6 +7,9 @@ body{
   background-color: grey;
 
 }
+.navbar-left{
+  line-height: 50px;
+}
 .container {
   width: 80%;
   margin: 10% auto auto;
@@ -14,11 +17,24 @@ body{
   flex-direction: column;
   min-height: 100vh;
 }
+.search{
+  /*width: 15  % !important;*/
+  float: right;
+  margin-top:.5%;
+}
 .content {
   flex: 1;
-  display: flex;
-  margin-right: 2%;
-  justify-content: space-between;
+  /*display: flex;*/
+  width: 40%;
+  /*margin-right: 2%;*/
+  /*justify-content: space-around;*/
+}
+.content_profile {
+  flex: 1;
+  /*display: flex;*/
+  width: 40%;
+  /*margin-right: 2%;*/
+  /*justify-content: space-around;*/
 }
 
 td small{
@@ -55,10 +71,27 @@ margin-left: 5%;
 }
 .content_posts{
   flex: 1;
-  margin-left: 10%;
+  /*margin-left: 10%;*/
 }
 .users{
 margin-bottom: 5%;
+}
+.ask{
+  margin-right: 4%;
+}
+.questions{
+  background-color: white;
+  height: 100%;
+  text-align: center;
+}
+
+
+.pagination{
+  margin: 2% 0 2% 50%;
+}
+.pagin{
+  color: white !important;
+  margin:0 2%;
 }
 
 footer{
@@ -69,8 +102,4 @@ footer{
   text-align: center;
   width: 126%;
   margin-left: -13%;
-}
-.pagin{
-  color: white !important;
-  margin:0 2%;
 }

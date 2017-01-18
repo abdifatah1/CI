@@ -13,8 +13,6 @@
     <div class="">
       <?php foreach($posts as $post) : ?>
 
-
-
         <div class="col-lg-3 col-md-3 col-sm-6">
           <h3 class="diff"><?php echo ucfirst($post['title']); ?></h3>
           <a  class="first_a" href="<?php echo site_url('/posts/' .$post['slug']);?>">

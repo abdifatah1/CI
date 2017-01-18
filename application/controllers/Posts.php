@@ -27,13 +27,12 @@ class Posts extends CI_Controller {
 		$config['base_url'] = base_url().'posts/all_posts';
 		$config['total_rows'] = $this->db->get('posts')->num_rows();
 		$config['per_page'] = 6;
-		// $per_page = $config['per_page'] = 6;
-		// $segment = $this->uri->segment(3);
+		$per_page = $config['per_page'];
+		$segment = $this->uri->segment(3);
 		$config['attributes'] = array('class' => 'pagin');
-		$config['use_page_numbers'] = TRUE;
+		$config['use_page_numbers'] = FALSE;
 		$this->pagination->initialize($config);
-		$data['posts'] = $this->db->order_by('id','DESC')->get('posts',$config['per_page'],$this->uri->segment(3));
-		// $data['posts'] = $this->post_model->get_pagination($per_page,$segment);
+		$data['posts'] = $this->post_model->get_pagination($per_page,$segment);
 
 		$data['username'] = $session_data['username'];
 		$data['admin'] = $session_data['admin'];

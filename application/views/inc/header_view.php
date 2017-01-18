@@ -17,28 +17,32 @@
         <li class=""><a href="<?php echo site_url('/') ?>">Home</a></li>
         <li class=""><a href="<?php echo site_url('posts/all_posts') ?>">Posts</a></li>
         <li><a href="<?php echo site_url('posts/create') ?>">Create Post</a></li>
-        <li><a href="<?php echo site_url('questions') ?>">Questions</a></li>
+        <li><a href="<?php echo site_url('pages') ?>">Questions</a></li>
         <li><a href="<?php echo site_url('jobs') ?>">Jobs</a></li>
         <li><a href="<?php echo site_url('contact') ?>">Contact Us</a></li>
       </ul>
-        <ul class="nav navbar-nav navbar-right login ">
-          <?php   if(isset($username)){
-            $name = ucfirst($username);
-            $logout = site_url('home/logout');
-            // if(isset($admin)){
-              $link = site_url('admin');
-              $user = site_url('admin/profile');
-              echo "<li><a class='btn' href='$link'>Admin</a></li>";
-            // }
-            echo "<li><a class='btn' href='$user'>$name</a></li>";
-            echo "<li><a class='btn' href='$logout'>Logout</a></li>";
-          }else{
-            $link = site_url('home/index');
-            echo "<li><a class='btn' href='$link'>Login</a></li>";
-          }
+      <ul class="nav navbar-nav navbar-right login ">
+        <?php   if(isset($username)){
+          $name = ucfirst($username);
+          $logout = site_url('home/logout');
 
-          ?>
+          $link = site_url('admin');
+          $user = site_url('admin/profile');
+          echo "<li><a class='btn' href='$link'>Admin</a></li>";
+
+          echo "<li><a class='btn' href='$user'>$name</a></li>";
+          echo "<li><a class='btn' href='$logout'>Logout</a></li>";
+        }else{
+          $link = site_url('home/index');
+          echo "<li><a class='btn' href='$link'>Login</a></li>";
+        }
+
+        ?>
 
       </ul>
+
+      <?php echo form_open('pages/search','class="search"');?>
+      <input class="form-control " type="text" name="search" placeholder="Search">
+      <?php echo form_close() ?>
     </nav>
   </header>
