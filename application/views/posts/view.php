@@ -1,7 +1,7 @@
 <div class="container">
   <h1><?php echo $post['title']; ?></h1>
 
-  <div class="content">
+  <div class="content_posts">
     <table class="table_view">
       <small>posted on : <?php echo $post['created']?></small>
 

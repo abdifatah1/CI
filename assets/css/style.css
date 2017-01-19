@@ -73,6 +73,11 @@ margin-left: 5%;
   flex: 1;
   /*margin-left: 10%;*/
 }
+/*search view*/
+.result a{
+  text-decoration: inherit !important;
+color: white !important;
+}
 .users{
 margin-bottom: 5%;
 }

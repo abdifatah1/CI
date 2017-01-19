@@ -12,15 +12,9 @@ class Contact extends CI_Controller
     $session_data = $this->session->userdata('logged_in');
     $data['username'] = $session_data['username'];
     $data['admin'] = $session_data['admin'];
-    //set validation rules
-    $this->form_validation->set_rules('fname', 'Name', 'trim|required');
-    $this->form_validation->set_rules('lname', 'Name', 'trim|required');
-    $this->form_validation->set_rules('email', 'Emaid ID', 'trim|required|valid_email');
-    $this->form_validation->set_rules('subject', 'Subject', 'trim|required');
-    $this->form_validation->set_rules('message', 'Message', 'trim|required');
 
     //run validation on form input
-    if ($this->form_validation->run() == FALSE)
+    if ($this->form_validation->run('contact') == FALSE)
     {
       //validation fails
       $this->load->view('inc/header_view',$data);
@@ -45,10 +39,17 @@ class Contact extends CI_Controller
       $this->email->to($to_email);
       $this->email->subject($subject);
       $this->email->message($message);
+      var_dump($this->email->send());
+      var_dump($this->email->send());
+      var_dump($this->email->send());
+      var_dump($this->email->send());
       if ($this->email->send())
       {
         // mail sent
-        $this->session->set_flashdata('msg','<div class="alert alert-success text-center">Your mail has been sent successfully!</div>');
+
+        $suc = $this->session->set_flashdata('msg','<div class="alert alert-success text-center">Your mail has been sent successfully!</div>');
+
+        // var_dump($suc);
         $this->load->view('inc/header_view');
         $this->load->view('contact_view');
         $this->load->view('inc/footer_view');
@@ -56,7 +57,9 @@ class Contact extends CI_Controller
       else
       {
         //error
-        $this->session->set_flashdata('msg','<div class="alert alert-danger text-center">There is error in sending mail! Please try again later</div>');
+        $er = $this->session->set_flashdata('msg','<div class="alert alert-danger text-center">There is error in sending mail! Please try again later</div>');
+
+
         $this->load->view('inc/header_view');
         $this->load->view('contact_view');
         $this->load->view('inc/footer_view');
@@ -64,18 +67,4 @@ class Contact extends CI_Controller
     }
   }
 
-  //custom validation function to accept only alphabets and space input
-  function alpha_space_only($str)
-  {
-    if (!preg_match("/^[a-zA-Z ]+$/",$str))
-    {
-      $this->form_validation->set_message('alpha_space_only', 'The %s field must contain only alphabets and space');
-      return FALSE;
-    }
-    else
-    {
-      return TRUE;
-    }
-  }
 }
-?>

@@ -11,12 +11,7 @@ class VerifyLogin extends CI_Controller {
   public function index()
   {
     //This method will have the credentials validation
-    // $this->load->library('form_validation');
-
-    $this->form_validation->set_rules('username', 'Username', 'trim|required');
-    $this->form_validation->set_rules('password', 'Password', 'trim|required|callback_check_database');
-
-    if($this->form_validation->run() == FALSE)
+    if($this->form_validation->run('login') == FALSE)
     {
       //Field validation failed.  User redirected to login page
       $data['title'] = 'Login';
@@ -37,11 +32,7 @@ class VerifyLogin extends CI_Controller {
   $session_data = $this->session->userdata('logged_in');
     //This method will have the credentials validation
 
-    $this->form_validation->set_rules('username', 'Username', 'trim|is_unique[users.username]|required');
-    $this->form_validation->set_rules('password', 'Password', 'trim|required');
-    $this->form_validation->set_rules('confirmationp', 'password confirmation', 'trim|required');
-
-    if($this->form_validation->run() == FALSE)
+      if($this->form_validation->run('register') == FALSE)
     {
       //Field validation failed.  User redirected to login page
       $data['title'] = "Register";

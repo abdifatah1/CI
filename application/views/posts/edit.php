@@ -10,6 +10,12 @@
     <label for="">Post<br>
       <textarea name="body" class="ckeditor" rows="8" cols="40"><?php echo $post['body']; ?></textarea>
     </label><br>
+    <select class="form-control " name="category">
+      <option value="none">Select a Category</option>
+      <?php foreach ($categories as $category) { ?>
+      <option value="<?php echo $category['id'] ?>"><?php echo $category['category_name'] ?></option>
+      <?php } ?>
+    </select>
     <label for="">Document
       <input type="file" name="userfile" value="<?php echo $post['img']; ?>"><br>
     </label> <br>

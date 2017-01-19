@@ -36,6 +36,11 @@ class Post_model extends CI_model {
     return $query->result_array();
   }
 
+  public function get_cat(){
+    $query = $this->db->get('category');
+    return $query->result_array();
+  }
+
   // create function model
   public function create_post($file_name,$user_id){
     $slug = url_title($this->input->post('title'));
@@ -45,11 +50,14 @@ class Post_model extends CI_model {
       'slug' => $slug,
       'body' => $this->input->post('body'),
       'img' => $file_name,
-      'user_id' => $user_id
+      'user_id' => $user_id,
+      'category_id' =>$this->input->post('category')
+
     );
 
     return $this->db->insert('posts',$data);
   }
+
   // delete function model
   public function delete_post($id){
     $this->db->where('id',$id);
@@ -64,7 +72,8 @@ class Post_model extends CI_model {
       'title' => $this->input->post('title'),
       'slug' => $slug,
       'body' => $this->input->post('body'),
-      'img' => $this->input->post('userfile')
+      'img' => $this->input->post('userfile'),
+      'category_id' =>$this->input->post('category')
     );
     $this->db->where('id',$this->input->post('id'));
     return $this->db->update('posts',$data);

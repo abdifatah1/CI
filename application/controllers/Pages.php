@@ -3,6 +3,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Pages extends CI_Controller {
 
+	public $data;
+	public $session_data;
+	// index method show lastest posts
+	function __construct(){
+		parent::__construct();
+		$session_data = $this->session->userdata('logged_in');
+		$this->data = array(
+			'username' => $session_data['username'],
+			'admin' => $session_data['admin'],
+			'id' => $session_data['id']
+		);
+	}
 
 	public function view($page = 'home')
 	{
@@ -12,35 +24,30 @@ class Pages extends CI_Controller {
 
 		if($this->session->userdata('logged_in'))
 		{
-			$session_data = $this->session->userdata('logged_in');
-			$data['username'] = $session_data['username'];
-			$data['title'] = 'Ask a question ! ';
-			$this->load->view('inc/header_view',$data);
-			$this->load->view('pages/'.$page,$data);
+
+			$this->data['title'] = 'Ask a question ! ';
+			$this->load->view('inc/header_view',$this->data);
+			$this->load->view('pages/'.$page,$this->data);
 			$this->load->view('inc/footer_view');
 		}
 		else
 		{
-			$data['title'] = ucfirst($page);
+			$this->data['title'] = ucfirst($page);
 			$this->load->view('inc/header_view');
-			$this->load->view('pages/'.$page, $data);
+			$this->load->view('pages/'.$page, $this->data);
 			$this->load->view('inc/footer_view');
 		}
 	}
 	public function index(){
-		$session_data = $this->session->userdata('logged_in');
-		$data['username'] = $session_data['username'];
-		$user_id = $session_data['id'];
-		$data['questions'] = $this->question_model->get_ques();
-		$data['title_ques'] = "Latest questions !";
-		$data['title'] = 'Ask a question ! ';
-		$this->form_validation->set_rules('username','User name','required');
-		$this->form_validation->set_rules('topic','Topic','required');
-		$this->form_validation->set_rules('question','Question','required');
 
-		if ($this->form_validation->run() === FALSE) {
-			$this->load->view('inc/header_view',$data);
-			$this->load->view('pages/questions',$data);
+		$user_id = $this->data['id'];
+		$this->data['questions'] = $this->question_model->get_ques();
+		$this->data['title_ques'] = "Latest questions !";
+		$this->data['title'] = 'Ask a question ! ';
+
+		if ($this->form_validation->run('questions') === FALSE) {
+			$this->load->view('inc/header_view',$this->data);
+			$this->load->view('pages/questions',$this->data);
 			$this->load->view('inc/footer_view');
 		}
 		else{

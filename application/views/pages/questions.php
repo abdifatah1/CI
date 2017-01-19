@@ -6,7 +6,7 @@
 
     ?>
     <div class="content_posts">
-      <div class="ask col-lg-5 col-md-4 col-sm-6">
+      <div class="ask col-lg-6 col-md-4 col-sm-6">
         <?php echo form_open('pages') ?>
         <?php echo form_label('Username') . '<br>'; ?>
         <?php echo form_input(array('class'=>'form-control','name' => 'username','placeholder'=>'First Name','value'=>$username)) . '<br>' ?>
@@ -21,7 +21,7 @@
           <h2>To ask a question you must be connected <small><a class="btn btn-default" href="<?php echo base_url()?>login">click here</a></small></h2>
           <?php  }?>
         </div>
-        <div class="questions col-lg-4 col-md-4 col-sm-6">
+        <div class="questions col-lg-5 col-md-4 col-sm-6">
           <h1><?php echo $title_ques; ?></h1><br>
           <?php foreach ($questions as $question) {
             echo $question['topic'].'<br>'.$question['question'].'<br> posted at'.$question['created'].'by'.$question['username'].'<br>';

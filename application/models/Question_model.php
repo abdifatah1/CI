@@ -23,5 +23,14 @@ class Question_model extends CI_Model{
     $query = $this->db->get('questions');
     return $query->result_array();
   }
+  public function search_articles(){
+
+    $search = $this->input->post('search');
+    $this->db->like('title',$search);
+    $this->db->or_like('slug',$search);
+    $this->db->or_like('body',$search);
+    $query = $this->db->get('posts');
+    return $query->result_array();
+  }
 
 }

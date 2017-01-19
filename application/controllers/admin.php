@@ -3,7 +3,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Admin extends CI_Controller{
 
-
+  public $data;
+  public $session_data;
+  function __construct(){
+    parent::__construct();
+    $session_data = $this->session->userdata('logged_in');
+    $this->data = array(
+      'username' => $session_data['username'],
+      'admin' => $session_data['admin'],
+      'id' => $session_data['id']
+    );
+  }
 
   function index()
   {
@@ -18,16 +28,12 @@ class Admin extends CI_Controller{
       $this->pagination->initialize($config);
       $per_page = $config['per_page'] = 8;
       $segment = $this->uri->segment(3);
-      $data['posts'] = $this->post_model->get_pagination($per_page,$segment);
-      // $data['posts'] = $this->post_model->get_all();
-
-      $data['users'] = $this->user_model->get_users();
-      $session_data = $this->session->userdata('logged_in');
-      $data['username'] = $session_data['username'];
-      $data['title'] = "Welcome to the admin page";
-      $data['admin'] = $session_data['admin'];
-      $this->load->view('inc/header_view', $data);
-      $this->load->view('admin_view', $data);
+      $this->data['posts'] = $this->post_model->get_pagination($per_page,$segment);
+      $this->data['users'] = $this->user_model->get_users();
+  
+      $this->data['title'] = "Welcome to the admin page";
+      $this->load->view('inc/header_view', $this->data);
+      $this->load->view('admin_view', $this->data);
       $this->load->view('inc/footer_view');
 
     }
@@ -42,14 +48,13 @@ class Admin extends CI_Controller{
   }
 
   public function profile(){
-    $session_data = $this->session->userdata('logged_in');
-    $user_id = $session_data['id'];
-    $data['profile'] = $this->post_model->profile_posts($user_id);
-    $data['username'] = $session_data['username'];
-    $username = $data['username'];
-    $data['title'] = "Welcome $username ";
-    $this->load->view('inc/header_view', $data);
-    $this->load->view('profile_view', $data);
+    $user_id = $this->data['id'];
+    $this->data['profile'] = $this->post_model->profile_posts($user_id);
+    $username = $this->data['username'];
+
+    $this->data['title'] = "Welcome $username ";
+    $this->load->view('inc/header_view', $this->data);
+    $this->load->view('profile_view', $this->data);
     $this->load->view('inc/footer_view');
 
   }
