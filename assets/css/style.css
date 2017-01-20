@@ -88,6 +88,14 @@ margin-bottom: 5%;
   background-color: white;
   height: 100%;
   text-align: center;
+  box-shadow: 10px 10px 5px rgb(10, 50, 40);
+
+}
+
+/*Admin*/
+.categories{
+  width: 17%;
+  padding: 0;
 }
 
 
@@ -107,4 +115,7 @@ footer{
   text-align: center;
   width: 126%;
   margin-left: -13%;
+}
+footer h3{
+line-height: 25px;
 }

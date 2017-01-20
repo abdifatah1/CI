@@ -40,11 +40,11 @@
         ?>
 
       </ul>
-
       <?php echo form_open('search','class="search form-inline"');?>
       <input class="form-control " type="text" name="search" placeholder="Search">
       <button class="btn btn-default" type="submit" name="submit" onkeyup="showHint(this.value)">Search</button>
       <center>  <p class="text" id="txtHint"></p></center>
+
       <?php echo form_close() ?>
     </nav>
   </header>

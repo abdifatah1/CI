@@ -50,6 +50,9 @@ class Posts extends CI_Controller {
 	public function view($slug = NULL)
 	{
 		$this->data['post'] = $this->post_model->get_posts($slug);
+				$cat_id = $this->data['post']['category_id'];
+		$this->data['categories'] = $this->post_model->get_cat_view($cat_id);
+		
 		if(!empty($date['post']))	{
 			show_404();
 		}

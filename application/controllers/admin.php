@@ -30,7 +30,7 @@ class Admin extends CI_Controller{
       $segment = $this->uri->segment(3);
       $this->data['posts'] = $this->post_model->get_pagination($per_page,$segment);
       $this->data['users'] = $this->user_model->get_users();
-  
+      $this->data['categories'] = $this->post_model->get_cat();
       $this->data['title'] = "Welcome to the admin page";
       $this->load->view('inc/header_view', $this->data);
       $this->load->view('admin_view', $this->data);
@@ -57,5 +57,13 @@ class Admin extends CI_Controller{
     $this->load->view('profile_view', $this->data);
     $this->load->view('inc/footer_view');
 
+  }
+  // add category
+  public function add_cat(){
+    $this->user_model->add_category();
+    redirect('admin');
+  }
+  public function delete_cat($id){
+    $this->user_model->delete_category($id);
   }
 }

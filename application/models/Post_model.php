@@ -40,6 +40,11 @@ class Post_model extends CI_model {
     $query = $this->db->get('category');
     return $query->result_array();
   }
+  public function get_cat_view($cat_id){
+    $this->db->where('id',$cat_id);
+    $query = $this->db->get('category');
+    return $query->result_array();
+  }
 
   // create function model
   public function create_post($file_name,$user_id){

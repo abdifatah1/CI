@@ -65,11 +65,24 @@
       <?php  } ?>
       <br>
       <a class="btn btn-default" href="<?php echo base_url()?>verifylogin/register">Add user</a>
-
-    </div>
-    <?php
-  } else {
-    echo 'you are not admin';
-  }
-  ?>
-</div>
+      <h1>Add Category</h1>
+      <?php echo form_open('admin/add_cat') ?>
+      <?php echo form_label('Category Name') . '<br>'; ?>
+      <?php echo form_input(array('class'=>' input-lg','name' => 'category')) . '<br>' ?>
+      <br>
+      <?php echo form_submit(array('class'=>'btn btn-default','name' => 'submit','value'=>'Add Category')) . '<br>' ?>
+      <?php form_close() ?><br>
+      <div class="categories col-lg-3  text-center">
+        <?php foreach ($categories as $category) { ?>
+          <p class="btn-default input-lg"><?php echo $category['category_name'] ?>
+            <a class=" btn btn-danger" href="<?php echo 'admin/delete_cat/'.$category['id'] ?>">Delete</a>
+          </p>
+          <?php } ?>
+        </div>
+      </div>
+      <?php
+    } else {
+      echo 'you are not admin';
+    }
+    ?>
+  </div>

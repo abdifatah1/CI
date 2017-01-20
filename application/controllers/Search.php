@@ -17,11 +17,23 @@ class Search extends CI_Controller{
 
   function index()
   {
-    $this->data['results'] = $this->question_model->search_articles();
-    $this->data['title'] = 'Search List';
-    $this->load->view('inc/header_view', $this->data);
-    $this->load->view('search_view', $this->data);
-    $this->load->view('inc/footer_view',$this->data);
+    if($this->form_validation->run('search') === FALSE){
+
+      $this->data['title'] = 'Search List';
+      $this->load->view('inc/header_view', $this->data);
+      $this->load->view('search_view', $this->data);
+      $this->load->view('inc/footer_view',$this->data);
+
+      var_dump($this->form_validation->run('search'));
+    }else {
+      $this->data['results'] = $this->question_model->search_articles();
+      $this->data['title'] = 'Search List';
+      $this->load->view('inc/header_view', $this->data);
+      $this->load->view('search_view', $this->data);
+      $this->load->view('inc/footer_view',$this->data);
+
+    }
+
 
   }
 

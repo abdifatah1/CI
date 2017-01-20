@@ -4,7 +4,7 @@
   <div class="content_posts">
     <table class="table_view">
       <small>posted on : <?php echo $post['created']?></small>
-
+      <p>This article is from <?php echo $categories[0]['category_name'] ?> category</p>
       <tbody>
         <tr>
           <td>

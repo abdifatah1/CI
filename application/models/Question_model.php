@@ -29,6 +29,8 @@ class Question_model extends CI_Model{
     $this->db->like('title',$search);
     $this->db->or_like('slug',$search);
     $this->db->or_like('body',$search);
+    $this->db->or_like('category_name',$search);
+    $this->db->join('category','category.id = posts.category_id');
     $query = $this->db->get('posts');
     return $query->result_array();
   }

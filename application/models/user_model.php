@@ -46,6 +46,19 @@ Class User_model extends CI_Model
 
     }
   }
-  
+  public function add_category(){
+    $cat = $this->input->post('category');
+    $data = ['category_name'=>$cat];
+    return $this->db->insert('category',$data);
+  }
+  public function delete_category($id){
+    $this->db->where('id', $id);
+
+    if($this->db->delete('category')){
+      redirect('admin');
+
+    }
+  }
+
 }
 ?>
